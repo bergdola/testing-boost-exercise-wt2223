@@ -18,8 +18,9 @@ jobs:
       - name: "Install necessary C++ dependencies"
         run: sudo apt update && sudo apt install cmake gcc libeigen3-dev libyaml-cpp-dev libboost-all-dev
       - name: "Create build folder and change directory to build"
-        run: mkdir build && cd build
+        run: mkdir build
       - name: "Run cmake"
+        working-directory: ./build
         run: cmake ..
       - name: "Build make"
         run: make
@@ -39,7 +40,6 @@ jobs:
       - uses: actions/download-artifact@v3
         with:
           name: builddir
-      - name: "Change directory to build"
-        run: cd build
       - name: "Run tests"
+        working-directory: ./build
         run: make test
