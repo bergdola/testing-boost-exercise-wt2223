@@ -17,7 +17,7 @@ jobs:
       - uses: actions/checkout@v3
       - name: "Install necessary C++ dependencies"
         run: sudo apt update && sudo apt install cmake gcc libeigen3-dev libyaml-cpp-dev libboost-all-dev
-      - name: "Create build folder and change directory to build"
+      - name: "Create build folder"
         run: mkdir build
       - name: "Run cmake"
         working-directory: ./build
@@ -25,12 +25,6 @@ jobs:
       - name: "Build make"
         working-directory: ./build
         run: make
-      - name: "upload build directory as artifact"
-        uses: actions/upload-artifact@v3
-        with:
-          name: builddir
-          path: build
-          retention-days: 1
   test:
     needs: build
     runs-on: ubuntu-latest
@@ -38,9 +32,14 @@ jobs:
       - uses: actions/checkout@v3
       - name: "Install necessary C++ dependencies"
         run: sudo apt update && sudo apt install cmake gcc libeigen3-dev libyaml-cpp-dev libboost-all-dev
-      - uses: actions/download-artifact@v3
-        with:
-          name: builddir
-      - name: "Run tests"
+      - name: "Create build folder"
+        run: mkdir build
+      - name: "Run cmake"  
+        working-directory: ./build
+        run: cmake ..
+      - name: "Make"
+        working-directory: ./build
+        run: make
+      - name: "Test"
         working-directory: ./build
         run: make test
