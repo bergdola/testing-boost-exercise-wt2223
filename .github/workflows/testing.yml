@@ -23,6 +23,7 @@ jobs:
         working-directory: ./build
         run: cmake ..
       - name: "Build make"
+        working-directory: ./build
         run: make
       - name: "upload build directory as artifact"
         uses: actions/upload-artifact@v3
