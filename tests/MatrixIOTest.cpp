@@ -18,7 +18,7 @@ struct matrixIOFixture {
   MatrixXd A;
 };
 
-BOOST_FIXTURE_TEST_SUITE(matrixIOTests, matrixIOFixture, *boost::unit_test::tolerance(1e-12))
+BOOST_FIXTURE_TEST_SUITE(matrixIOTests, matrixIOFixture, *boost::unit_test::tolerance(1e-16))
 
 BOOST_AUTO_TEST_CASE(openData)
 {
