@@ -24,15 +24,15 @@ BOOST_AUTO_TEST_CASE(openData)
 {
   A = matrixIO::openData("../data/m3.csv", 3);
 
-  BOOST_TEST(A(0) == expectedA(0));
-  BOOST_TEST(A(1) == expectedA(1));
-  BOOST_TEST(A(2) == expectedA(2));
-  BOOST_TEST(A(3) == expectedA(3));
-  BOOST_TEST(A(4) == expectedA(4));
-  BOOST_TEST(A(5) == expectedA(5));
-  BOOST_TEST(A(6) == expectedA(6));
-  BOOST_TEST(A(7) == expectedA(7));
-  BOOST_TEST(A(8) == expectedA(8));
+  BOOST_TEST(A(0, 0) == expectedA(0, 0));
+  BOOST_TEST(A(0, 1) == expectedA(0, 1));
+  BOOST_TEST(A(0, 2) == expectedA(0, 2));
+  BOOST_TEST(A(1, 0) == expectedA(1, 0));
+  BOOST_TEST(A(1, 1) == expectedA(1, 1));
+  BOOST_TEST(A(1, 2) == expectedA(1, 2));
+  BOOST_TEST(A(2, 0) == expectedA(2, 0));
+  BOOST_TEST(A(2, 1) == expectedA(2, 1));
+  BOOST_TEST(A(2, 2) == expectedA(2, 2));
 }
 
 BOOST_AUTO_TEST_SUITE_END()
